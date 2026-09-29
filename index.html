@@ -12,8 +12,8 @@
 <style>
   :root {
     --ink: #0D0F12;
-    --panel: rgba(20, 22, 28, 0.78);
-    --panel-2: rgba(30, 34, 44, 0.72);
+    --panel: rgba(20, 22, 28, 0.82);
+    --panel-2: rgba(30, 34, 44, 0.78);
     --line: rgba(255, 255, 255, 0.12);
     --line-strong: rgba(255, 255, 255, 0.22);
     --text: #FFFFFF;
@@ -37,25 +37,25 @@
     --glass-blur: blur(16px);
   }
 
-  /* Light Theme CSS Variables Override */
+  /* Light Theme Overrides */
   [data-theme="light"] {
     --ink: #EBF1F6;
-    --panel: rgba(255, 255, 255, 0.84);
-    --panel-2: rgba(241, 245, 249, 0.88);
-    --line: rgba(15, 23, 42, 0.12);
-    --line-strong: rgba(15, 23, 42, 0.22);
+    --panel: rgba(255, 255, 255, 0.88);
+    --panel-2: rgba(241, 245, 249, 0.92);
+    --line: rgba(15, 23, 42, 0.14);
+    --line-strong: rgba(15, 23, 42, 0.24);
     --text: #0F172A;
     --text-dim: #334155;
     --text-dimmer: #475569;
     --red-text: #990000;
-    --red-bg: rgba(153, 0, 0, 0.12);
+    --red-bg: rgba(153, 0, 0, 0.14);
     --green-bg: rgba(16, 185, 129, 0.18);
     --amber-bg: rgba(245, 158, 11, 0.18);
     --blue-bg: rgba(59, 130, 246, 0.18);
   }
 
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
   body {
     margin: 0;
     background: var(--ink);
@@ -66,6 +66,7 @@
     position: relative;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, .display {
     font-family: 'Outfit', 'Inter', system-ui, sans-serif;
@@ -77,27 +78,27 @@
   p { margin: 0; color: var(--text-dim); }
   a { color: inherit; text-decoration: none; }
   .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
-  section { padding: 64px 0; position: relative; z-index: 2; }
-  @media (max-width: 720px) { section { padding: 40px 0; } }
+  section { padding: 56px 0; position: relative; z-index: 2; }
+  @media (max-width: 720px) { section { padding: 36px 0; } }
 
   ::selection { background: #990000; color: #fff; }
 
-  /* Animated Truck Vector Background - ALWAYS VISIBLE */
+  /* Vector Truck Background Animation - Scoped Z-Index strictly behind content */
   .truck-bg {
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 0;
     overflow: hidden;
     pointer-events: none;
-    color: rgba(150, 160, 185, 0.35);
+    color: rgba(160, 175, 200, 0.22);
     transition: color 0.3s ease;
   }
   [data-theme="light"] .truck-bg {
-    color: rgba(71, 85, 105, 0.45);
+    color: rgba(71, 85, 105, 0.32);
   }
   .truck-bg__lane { position: absolute; left: 50%; width: 150vmax; height: 110px; }
-  .truck-bg__road { position: absolute; left: 0; right: 0; bottom: 4px; border-top: 2px dashed currentColor; opacity: 0.25; }
-  .truck-bg__truck { position: absolute; left: 0; bottom: 5px; width: 320px; scale: var(--truck-scale,1); animation-name: truck-bg-drive; animation-timing-function: linear; animation-iteration-count: infinite; will-change: translate; }
+  .truck-bg__road { position: absolute; left: 0; right: 0; bottom: 4px; border-top: 2px dashed currentColor; opacity: 0.2; }
+  .truck-bg__truck { position: absolute; left: 0; bottom: 5px; width: 300px; scale: var(--truck-scale,1); animation-name: truck-bg-drive; animation-timing-function: linear; animation-iteration-count: infinite; will-change: translate; }
   .truck-bg__truck--reverse { scale: calc(-1 * var(--truck-scale,1)) var(--truck-scale,1); animation-name: truck-bg-drive-reverse; }
   .truck-bg__truck svg { display: block; width: 100%; height: auto; overflow: visible; }
   .truck-bg .tb-body { fill: currentColor; fill-opacity: 0.25; }
@@ -108,25 +109,25 @@
   @keyframes truck-bg-drive { from { translate: -340px 0; } to { translate: calc(150vmax + 40px) 0; } }
   @keyframes truck-bg-drive-reverse { from { translate: calc(150vmax + 40px) 0; } to { translate: -340px 0; } }
   @keyframes truck-bg-wheel { to { rotate: 360deg; } }
-  @media (max-width: 768px) { .truck-bg__lane--desktop { display: none; } .truck-bg__truck { width: 210px; } }
-  @media (prefers-reduced-motion: reduce) { .truck-bg__truck, .truck-bg__wheel { animation-play-state: paused; } }
+  @media (max-width: 768px) { .truck-bg__lane--desktop { display: none; } .truck-bg__truck { width: 190px; } }
 
-  /* Translucent Red Navigation Bar */
+  /* Translucent Red Navigation Bar with Mobile Alignment */
   .nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(153, 0, 0, 0.78);
+    background: rgba(153, 0, 0, 0.88);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    height: 80px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 72px;
+    padding: 10px 0;
     display: flex;
     align-items: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.35);
   }
   [data-theme="light"] .nav {
-    background: rgba(153, 0, 0, 0.92);
+    background: rgba(153, 0, 0, 0.94);
     border-bottom-color: rgba(0, 0, 0, 0.15);
   }
   .nav .container {
@@ -135,35 +136,41 @@
     justify-content: space-between;
     width: 100%;
     gap: 16px;
+    flex-wrap: wrap;
   }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .brand img { height: 42px; display: block; object-fit: contain; }
-  .brand-tag { font-size: 11px; font-weight: 800; background: rgba(255,255,255,0.18); color: #fff; padding: 3px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.8px; }
+  .brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .brand img { height: 42px; width: auto; display: block; object-fit: contain; }
+  .brand-tag { font-size: 10px; font-weight: 800; background: rgba(255,255,255,0.2); color: #fff; padding: 3px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.8px; white-space: nowrap; }
 
   .nav-links {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     list-style: none;
     margin: 0;
     padding: 0;
+    align-items: center;
+  }
+  @media (max-width: 960px) {
+    .nav-links { display: none; } /* Prevent nav overlap on mobile screens */
   }
   .nav-links a {
     color: #FFFFFF;
     font-weight: 600;
     font-size: 0.88rem;
-    padding: 0.5rem 0.95rem;
+    padding: 0.45rem 0.85rem;
     border-radius: 9999px;
     transition: all 0.15s ease;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+    white-space: nowrap;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
   }
   .nav-links a:hover {
     color: #fff;
     background: rgba(255,255,255,0.22);
   }
 
-  .nav-ctas { display: flex; align-items: center; gap: 10px; }
+  .nav-ctas { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 
-  /* Buttons with High Contrast */
+  /* High Contrast Buttons */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -199,27 +206,35 @@
   [data-theme="light"] .btn-outline:hover { background: rgba(15,23,42,0.18); border-color: #0F172A; }
   .btn-sm { padding: 8px 16px; font-size: 13px; height: 38px; }
 
-  /* Hero Section */
-  .hero { padding: 56px 0 40px; }
+  /* Hero Section Alignment Fix */
+  .hero { padding: 48px 0 36px; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 40px;
     align-items: center;
   }
-  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-  .hero h1 { font-size: clamp(38px, 5.2vw, 60px); color: var(--text); line-height: 1.05; }
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+  }
+  .hero h1 { font-size: clamp(30px, 4.8vw, 54px); color: var(--text); line-height: 1.12; }
   .hl {
     background: linear-gradient(135deg, #EF4444 0%, #DC2626 50%, #990000 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .hero .lede { font-size: 18px; color: var(--text-dim); margin-top: 18px; line-height: 1.6; max-width: 540px; font-weight: 500; }
+  .hero .lede { font-size: 17.5px; color: var(--text-dim); margin-top: 16px; line-height: 1.6; max-width: 560px; font-weight: 500; }
+  @media (max-width: 900px) { .hero .lede { margin-left: auto; margin-right: auto; } }
   
-  .hero-trust { display: flex; gap: 24px; margin-top: 32px; flex-wrap: wrap; }
+  .hero-trust { display: flex; gap: 24px; margin-top: 30px; flex-wrap: wrap; }
+  @media (max-width: 900px) { .hero-trust { justify-content: center; } }
   .hero-trust div { font-size: 11.5px; color: var(--text-dimmer); font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
-  .hero-trust b { display: block; font-family: 'Outfit'; font-size: 26px; color: var(--red-bright); font-weight: 800; letter-spacing: -0.03em; }
+  .hero-trust b { display: block; font-family: 'Outfit'; font-size: 25px; color: var(--red-bright); font-weight: 800; letter-spacing: -0.03em; }
 
   .hero-media {
     position: relative;
@@ -230,30 +245,34 @@
     background: var(--panel);
     backdrop-filter: var(--glass-blur);
     -webkit-backdrop-filter: var(--glass-blur);
+    width: 100%;
   }
   .hero-media img { width: 100%; height: auto; display: block; object-fit: cover; }
   .hero-logo-badge {
     position: absolute;
     top: 14px;
     left: 14px;
-    background: rgba(153, 0, 0, 0.85);
+    background: rgba(153, 0, 0, 0.9);
     backdrop-filter: blur(10px);
     padding: 6px 14px;
     border-radius: 100px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    z-index: 5;
   }
-  .hero-logo-badge img { height: 20px; width: auto; }
+  .hero-logo-badge img { height: 22px; width: auto; }
   .hero-logo-badge span { font-size: 11px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.8px; }
 
   .route-visual {
     position: relative;
+    width: 100%;
     aspect-ratio: 16 / 9;
     background: radial-gradient(ellipse at 30% 20%, rgba(153,0,0,0.22) 0%, var(--panel) 75%);
     border-top: 1px solid var(--line-strong);
+    overflow: hidden;
   }
   .route-visual svg { width: 100%; height: 100%; display: block; }
   #route-path { stroke-dasharray: 900; stroke-dashoffset: 900; animation: draw 2.1s ease forwards 0.3s; }
@@ -277,13 +296,15 @@
     margin-bottom: 14px;
     padding-bottom: 12px;
     border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .sub-header-brand {
     display: flex;
     align-items: center;
     gap: 12px;
   }
-  .sub-header-brand img { height: 30px; }
+  .sub-header-brand img { height: 32px; width: auto; }
   .sub-header-brand h3 { font-size: 17px; font-weight: 700; color: var(--text); }
   .sub-bar-title {
     font-size: 12px;
@@ -335,10 +356,11 @@
     -webkit-backdrop-filter: var(--glass-blur);
   }
   @media (max-width: 768px) { .sub-banner { flex-direction: column; align-items: flex-start; } }
-  .sub-banner-info h3 { font-size: 20px; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
+  .sub-banner-info h3 { font-size: 20px; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+  .sub-banner-info h3 img { height: 26px; width: auto; }
   .sub-banner-info p { font-size: 14px; color: var(--text-dim); }
 
-  /* App Workspace Grid */
+  /* Master App Workspace Grid */
   .workspace {
     display: grid;
     grid-template-columns: 270px 1fr;
@@ -370,8 +392,9 @@
     margin: 4px 8px 10px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
   }
+  .side-nav-title img { height: 16px; width: auto; }
   .tab-btn {
     display: flex;
     align-items: center;
@@ -431,7 +454,7 @@
     align-items: center;
     gap: 10px;
   }
-  .view-head-title img { height: 26px; }
+  .view-head-title img { height: 28px; width: auto; }
   .view-head h2 { font-size: 24px; color: var(--text); }
   .view-head p { font-size: 14px; color: var(--text-dim); }
 
@@ -561,9 +584,9 @@
     display: none;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 999;
     align-items: center;
     justify-content: center;
@@ -588,7 +611,7 @@
     gap: 12px;
     margin-bottom: 8px;
   }
-  .modal-header img { height: 28px; }
+  .modal-header img { height: 30px; width: auto; }
   .modal-header h3 { font-size: 22px; color: var(--text); }
   .modal-body p { font-size: 14px; color: var(--text-dim); margin-bottom: 20px; }
   .form-group { margin-bottom: 16px; }
@@ -638,11 +661,11 @@
 </head>
 <body>
 
-  <!-- Translucent Red Navigation Bar with Official Vector Logo -->
+  <!-- Translucent Red Navigation Bar with Official White Vector Logo -->
   <nav class="nav">
     <div class="container">
       <a href="#inicio" class="brand" title="HCGA Trading LLC">
-        <img src="logo.svg" alt="HCGA Trading LLC Logo">
+        <img src="logo-white.svg" alt="HCGA Trading LLC Logo">
         <span class="brand-tag">Plataforma Oficial</span>
       </a>
       <ul class="nav-links">
@@ -672,13 +695,13 @@
       </div>
       <div class="hero-media">
         <div class="hero-logo-badge">
-          <img src="logo.svg" alt="HCGA Logo">
+          <img src="logo-white.svg" alt="HCGA Logo">
           <span>HCGA Identity</span>
         </div>
         <img src="highway_truck_branded.png" alt="HCGA Truck on Highway">
         <div class="route-visual">
           <svg viewBox="0 0 520 200" fill="none">
-            <path d="M 50 160 Q 220 80 470 40" stroke="rgba(255,255,255,0.2)" stroke-dasharray="6 6" stroke-width="2"/>
+            <path d="M 50 160 Q 220 80 470 40" stroke="rgba(255,255,255,0.25)" stroke-dasharray="6 6" stroke-width="2"/>
             <path id="route-path" d="M 50 160 Q 220 80 470 40" stroke="#DC2626" stroke-width="4"/>
             <circle cx="50" cy="160" r="8" fill="#10B981"/>
             <circle cx="470" cy="40" r="8" fill="#DC2626"/>
@@ -702,7 +725,7 @@
       <div class="sub-header-bar">
         <div class="sub-header-top">
           <div class="sub-header-brand">
-            <img src="logo.svg" alt="HCGA Logo">
+            <img src="logo-white.svg" alt="HCGA Logo">
             <h3>Ecosistema HCGA Trading — Demo Unificado</h3>
           </div>
           <span class="pv-badge green">ACCESO DEMO 100% UNLOCKED</span>
@@ -728,7 +751,7 @@
       <div class="sub-banner">
         <div class="sub-banner-info">
           <h3 id="plan-title">
-            <img src="logo.svg" alt="HCGA Logo" style="height:22px; vertical-align:middle;">
+            <img src="logo-white.svg" alt="HCGA Logo">
             <span>⚡ Modo Demo Total (Unificado)</span>
           </h3>
           <p id="plan-desc">Explora todas las capacidades y potencialidades que tendrá la plataforma HCGA en un solo lugar. Todos los procesos están abiertos para probar.</p>
@@ -742,7 +765,7 @@
         <!-- Side Navigation -->
         <aside class="side-nav">
           <div class="side-nav-title">
-            <img src="logo.svg" alt="HCGA Logo" style="height:14px;">
+            <img src="logo-white.svg" alt="HCGA Logo">
             <span>Módulos Demo</span>
           </div>
           <button class="tab-btn active" data-tab="tab-loads">
@@ -783,7 +806,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Cargas Disponibles con Tarifa Bloqueada</h2>
                 </div>
                 <p>El monto acordado al presionar Aceptar Carga es exactamente lo que recibes al entregar.</p>
@@ -841,7 +864,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Rastreo GPS en Tiempo Real & Navegador</h2>
                 </div>
                 <p>Monitoreo continuo con telemetría de ruta, truck stops y precios de diésel.</p>
@@ -887,7 +910,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Reloj HOS (Horas de Servicio) & Inspección DVIR</h2>
                 </div>
                 <p>Cumplimiento automático alineado a la normativa oficial de la FMCSA.</p>
@@ -928,7 +951,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Gestión de Flotilla (Fleet Carrier)</h2>
                 </div>
                 <p>Supervisa camiones, choferes y despacho desde una sola pantalla.</p>
@@ -977,7 +1000,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Herramienta Shipper / Broker</h2>
                 </div>
                 <p>Publica cargas, calcula tarifas de mercado y verifica el número MC/DOT del transportista.</p>
@@ -1006,7 +1029,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Facturación & Cobro Automático de Detention</h2>
                 </div>
                 <p>Tras 2 horas de espera en rampa, el sistema cobra automáticamente $65/hr de detention.</p>
@@ -1039,7 +1062,7 @@
             <div class="view-head">
               <div>
                 <div class="view-head-title">
-                  <img src="logo.svg" alt="HCGA Logo">
+                  <img src="logo-white.svg" alt="HCGA Logo">
                   <h2>Asistente de IA Logístico 24/7</h2>
                 </div>
                 <p>Resuelve dudas de rutas, regulaciones HOS, tarifas promedio y disputas al instante.</p>
@@ -1066,7 +1089,7 @@
     <!-- UI DASHBOARD PREVIEWS SECTION -->
     <section>
       <div style="margin-bottom: 28px; display:flex; align-items:center; gap:12px;">
-        <img src="logo.svg" alt="HCGA Logo" style="height:32px;">
+        <img src="logo-white.svg" alt="HCGA Logo" style="height:32px;">
         <div>
           <h2>Interfaces Nativas del Ecosistema</h2>
           <p style="color:var(--text-dim); margin-top:4px;">Cada rol cuenta con una experiencia dedicada ajustada a su flujo operativo.</p>
@@ -1220,7 +1243,7 @@
   <div class="modal-backdrop" id="modal-post">
     <div class="modal-body">
       <div class="modal-header">
-        <img src="logo.svg" alt="HCGA Logo">
+        <img src="logo-white.svg" alt="HCGA Logo">
         <h3>Publicar Nueva Carga</h3>
       </div>
       <p>La tarifa quedará bloqueada al chofer que la acepte primeramente.</p>
@@ -1246,7 +1269,7 @@
   <div class="modal-backdrop" id="modal-dvir">
     <div class="modal-body">
       <div class="modal-header">
-        <img src="logo.svg" alt="HCGA Logo">
+        <img src="logo-white.svg" alt="HCGA Logo">
         <h3>Inspección Vehicular DVIR Digital</h3>
       </div>
       <p>Revisa el estado de la unidad según normas de la FMCSA.</p>
@@ -1272,7 +1295,7 @@
   <div class="modal-backdrop" id="modal-sign">
     <div class="modal-body">
       <div class="modal-header">
-        <img src="logo.svg" alt="HCGA Logo">
+        <img src="logo-white.svg" alt="HCGA Logo">
         <h3>Firma Digital de Recepción (POD / BOL)</h3>
       </div>
       <p>Captura la firma del recibidor para solicitar el pago inmediato.</p>
@@ -1286,12 +1309,11 @@
     </div>
   </div>
 
-  <!-- Footer with Logo and Links -->
+  <!-- Footer with White Logo and Links -->
   <footer class="footer">
     <div class="container">
       <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:16px;">
-        <img src="logo.svg" alt="HCGA Trading Logo" style="height: 40px;">
-        <span style="font-family:'Outfit'; font-size:20px; font-weight:800; color:var(--text);">HCGA Trading LLC</span>
+        <img src="logo-white.svg" alt="HCGA Trading Logo" style="height: 42px; width: auto;">
       </div>
       <div data-i18n="footer_copy">© 2026 HCGA Trading LLC — Todos los derechos reservados</div>
       <div class="standalone-links">
@@ -1429,7 +1451,7 @@
       const PLAN_DATA = {
         demo: {
           title: "⚡ Modo Demo Total (Unificado)",
-          desc: "Explora todas las capacidades y potencialidades que tendrá la plataforma HCGA en un solo lugar. Todos los módulos están abiertos para demostración.",
+          desc: "Explora todas las capacidades y potencialidades que tendrá la plataforma HCGA en un solo lugar. Todos los procesos están abiertos para probar.",
           highlightTabs: ["tab-loads", "tab-map", "tab-compliance", "tab-fleet", "tab-post", "tab-billing", "tab-ai"]
         },
         driver: {
@@ -1456,7 +1478,7 @@
         const info = PLAN_DATA[subKey];
         const titleEl = document.getElementById('plan-title');
         if (titleEl) {
-          titleEl.innerHTML = `<img src="logo.svg" alt="HCGA Logo" style="height:22px; vertical-align:middle;"> <span>${info.title}</span>`;
+          titleEl.innerHTML = `<img src="logo-white.svg" alt="HCGA Logo" style="height:24px; width:auto; vertical-align:middle;"> <span>${info.title}</span>`;
         }
         const descEl = document.getElementById('plan-desc');
         if (descEl) descEl.textContent = info.desc;
@@ -1465,7 +1487,6 @@
           btn.classList.toggle('active', btn.getAttribute('data-sub') === subKey);
         });
 
-        // Keep ALL tabs accessible for full interactive demo experience
         document.querySelectorAll('.tab-btn').forEach(btn => {
           const tabId = btn.getAttribute('data-tab');
           btn.classList.remove('disabled');
