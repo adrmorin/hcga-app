@@ -10,7 +10,7 @@
   const TRANSLATIONS = {
     es: {
       // Global & Navigation
-      nav_how_it_works: "Cómo funciona",
+      nav_how_it_works: "App Unificada",
       nav_protection: "Protección del chofer",
       nav_security: "Seguridad",
       nav_tech: "Tecnología",
@@ -102,7 +102,7 @@
       // Final CTA & Footer
       final_h2: "Súmate a la plataforma que sí cuida al chofer.",
       final_p: "Prueba ambas apps ahora mismo — no hay nada que instalar.",
-      footer_copy: "© 2026 HCGA Trading LLC",
+      footer_copy: "© 2026 HCGA Trading LLC — Todos los derechos reservados",
 
       // App Shell & Tabs (Driver & Portal)
       app_driver_title: "HCGA Chofer",
@@ -134,14 +134,14 @@
       lang_en: "English",
 
       // Unified Master App & Subscription Tiers
-      sub_active_plan: "Plan Activo:",
-      sub_driver_name: "Chofer Independiente (Owner Operator)",
+      sub_active_plan: "Seleccionar Modo de Visualización:",
+      sub_driver_name: "Chofer Independiente",
       sub_driver_desc: "Acceso a tablero de cargas con tarifa protegida, reloj HOS FMCSA, DVIR digital y GPS de camiones.",
-      sub_fleet_name: "Compañía de Flotilla (Fleet Carrier)",
+      sub_fleet_name: "Compañía de Flotilla",
       sub_fleet_desc: "Gestión de múltiples camiones y choferes, asignación de despacho y monitoreo de cumplimiento.",
-      sub_shipper_name: "Shipper / Broker (Cliente que envía Carga)",
+      sub_shipper_name: "Shipper / Broker",
       sub_shipper_desc: "Publicación de cargas sin llamadas, rastreo GPS en vivo, firma digital de BOL y verificación MC.",
-      sub_demo_name: "Modo Demo Total (Todas las Capacidades Unificadas)",
+      sub_demo_name: "Modo Demo Total (Todas las Funciones)",
       sub_demo_desc: "Visualiza la potencialidad completa de la plataforma con todas las herramientas desbloqueadas.",
       sub_switch_btn: "Cambiar Suscripción",
 
@@ -163,7 +163,7 @@
 
     en: {
       // Global & Navigation
-      nav_how_it_works: "How it works",
+      nav_how_it_works: "Unified App",
       nav_protection: "Driver Protection",
       nav_security: "Security & Compliance",
       nav_tech: "Technology",
@@ -255,7 +255,7 @@
       // Final CTA & Footer
       final_h2: "Join the platform that actually protects the driver.",
       final_p: "Try both applications right now — nothing to install.",
-      footer_copy: "© 2026 HCGA Trading LLC",
+      footer_copy: "© 2026 HCGA Trading LLC — All rights reserved",
 
       // App Shell & Tabs (Driver & Portal)
       app_driver_title: "HCGA Driver",
@@ -281,20 +281,20 @@
       status_conformed: "Compliant",
 
       // Theme & Lang labels
-      theme_dark: "Dark Mode",
-      theme_light: "Light Mode",
+      theme_dark: "Modo Oscuro",
+      theme_light: "Modo Claro",
       lang_es: "Español",
       lang_en: "English",
 
       // Unified Master App & Subscription Tiers
-      sub_active_plan: "Active Plan:",
-      sub_driver_name: "Independent Driver (Owner Operator)",
+      sub_active_plan: "Select Display Mode:",
+      sub_driver_name: "Independent Driver",
       sub_driver_desc: "Access to load board with guaranteed rate lock, FMCSA HOS clock, digital DVIR, and truck GPS.",
-      sub_fleet_name: "Fleet Carrier Company",
+      sub_fleet_name: "Fleet Carrier",
       sub_fleet_desc: "Manage multiple trucks & drivers, dispatch load assignment, and monitor FMCSA compliance.",
-      sub_shipper_name: "Shipper / Broker (Freight Client)",
+      sub_shipper_name: "Shipper / Broker",
       sub_shipper_desc: "Instant no-call load posting, real-time GPS freight tracking, digital BOL signatures & MC vetting.",
-      sub_demo_name: "Full Unified Demo Mode (All Capabilities Unlocked)",
+      sub_demo_name: "Full Demo Mode (All Features)",
       sub_demo_desc: "Visualize the complete potential of the platform with all tools and features unlocked.",
       sub_switch_btn: "Switch Subscription",
 
@@ -319,25 +319,24 @@
   let currentTheme = localStorage.getItem("hcga_theme") || "dark";
   let currentLang = localStorage.getItem("hcga_lang") || "es";
 
-  // --- Helper: Inject Light Mode CSS rules ---
+  // --- Helper: Inject Light & Dark Theme Contrast Rules ---
   function injectThemeStyles() {
     if (document.getElementById("hcga-theme-styles")) return;
     const style = document.createElement("style");
     style.id = "hcga-theme-styles";
     style.textContent = `
-      /* Light Theme Variables */
+      /* Light Theme Full Contrast & Translucency Overrides */
       [data-theme="light"] {
-        --ink: #F4F6F9 !important;
-        --panel: #FFFFFF !important;
-        --panel-2: #EAEFF5 !important;
-        --line: rgba(0, 0, 0, 0.08) !important;
-        --line-strong: rgba(0, 0, 0, 0.16) !important;
+        --ink: #EBF1F6 !important;
+        --panel: rgba(255, 255, 255, 0.85) !important;
+        --panel-2: rgba(241, 245, 249, 0.9) !important;
+        --line: rgba(15, 23, 42, 0.14) !important;
+        --line-strong: rgba(15, 23, 42, 0.25) !important;
         --text: #0F172A !important;
-        --text-dim: #475569 !important;
-        --text-dimmer: #64748B !important;
-        --green-bg: rgba(16, 185, 129, 0.16) !important;
-        --amber-bg: rgba(245, 158, 11, 0.16) !important;
-        --red-bg: rgba(153, 0, 0, 0.12) !important;
+        --text-dim: #334155 !important;
+        --text-dimmer: #475569 !important;
+        --red-text: #990000 !important;
+        --red-bg: rgba(153, 0, 0, 0.14) !important;
       }
 
       [data-theme="light"] body {
@@ -345,38 +344,49 @@
         color: var(--text) !important;
       }
 
-      [data-theme="light"] .nav {
-        background: rgba(255, 255, 255, 0.88) !important;
-        border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+      [data-theme="light"] h1, 
+      [data-theme="light"] h2, 
+      [data-theme="light"] h3, 
+      [data-theme="light"] h4,
+      [data-theme="light"] .view-head h2,
+      [data-theme="light"] .sub-banner-info h3,
+      [data-theme="light"] .sub-header-brand h3,
+      [data-theme="light"] .load-route b,
+      [data-theme="light"] .metric-card b,
+      [data-theme="light"] .modal-header h3,
+      [data-theme="light"] .comp-item h4,
+      [data-theme="light"] .tech-cell span {
+        color: #0F172A !important;
       }
 
-      [data-theme="light"] .nav-links a {
+      [data-theme="light"] p,
+      [data-theme="light"] .lede,
+      [data-theme="light"] .view-head p,
+      [data-theme="light"] .sub-banner-info p,
+      [data-theme="light"] .load-route span,
+      [data-theme="light"] .metric-card small {
         color: #334155 !important;
       }
-      [data-theme="light"] .nav-links a:hover {
-        color: #990000 !important;
-        background: rgba(153, 0, 0, 0.08) !important;
-      }
-      [data-theme="light"] .nav .btn-outline {
-        border-color: rgba(0, 0, 0, 0.25) !important;
-        color: #0F172A !important;
+
+      [data-theme="light"] .sub-pill {
+        background: rgba(241, 245, 249, 0.9) !important;
+        color: #334155 !important;
+        border-color: rgba(15, 23, 42, 0.2) !important;
       }
 
-      [data-theme="light"] .app-shell,
-      [data-theme="light"] .modal-sheet {
-        background: var(--ink) !important;
-        color: var(--text) !important;
+      [data-theme="light"] .sub-pill.active {
+        background: #990000 !important;
+        color: #FFFFFF !important;
+        border-color: #990000 !important;
       }
 
-      [data-theme="light"] .tabbar {
-        background: rgba(255, 255, 255, 0.94) !important;
-        border-top-color: rgba(0, 0, 0, 0.1) !important;
+      [data-theme="light"] .tab-btn {
+        color: #334155 !important;
       }
-      [data-theme="light"] .tab {
-        color: #64748B !important;
-      }
-      [data-theme="light"] .tab.active {
+      [data-theme="light"] .tab-btn.active {
+        background: rgba(255, 255, 255, 0.95) !important;
         color: #0F172A !important;
+        border-color: #990000 !important;
       }
 
       [data-theme="light"] input,
@@ -384,7 +394,7 @@
       [data-theme="light"] textarea {
         background: #FFFFFF !important;
         color: #0F172A !important;
-        border-color: rgba(0, 0, 0, 0.2) !important;
+        border-color: rgba(15, 23, 42, 0.25) !important;
       }
 
       /* Control Widget Styling */
@@ -392,50 +402,47 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.25);
         padding: 4px;
         border-radius: 9999px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
       [data-theme="light"] .hcga-controls-bar {
-        background: rgba(0, 0, 0, 0.05);
-        border-color: rgba(0, 0, 0, 0.12);
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.35);
       }
 
       .hcga-btn-toggle {
         background: transparent;
         border: none;
-        color: currentColor;
+        color: #FFFFFF !important;
         font-family: 'Inter', sans-serif;
-        font-size: 11.5px;
+        font-size: 12px;
         font-weight: 700;
-        padding: 4px 10px;
+        padding: 5px 12px;
         border-radius: 9999px;
         cursor: pointer;
         display: inline-flex;
         align-items: center;
-        gap: 5px;
-        transition: background .15s ease, color .15s ease, transform .1s ease;
+        gap: 6px;
+        transition: background .15s ease, transform .1s ease;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       }
       .hcga-btn-toggle:hover {
-        background: rgba(255, 255, 255, 0.18);
-      }
-      [data-theme="light"] .hcga-btn-toggle:hover {
-        background: rgba(0, 0, 0, 0.08);
+        background: rgba(255, 255, 255, 0.22);
       }
       .hcga-btn-toggle:active {
         transform: scale(0.96);
       }
 
-      /* Floating Control Widget for App views */
       .hcga-float-controls {
         position: fixed;
         top: 14px;
         right: 14px;
         z-index: 999;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
     `;
     document.head.appendChild(style);
@@ -447,11 +454,10 @@
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("hcga_theme", theme);
 
-    // Update button icons if rendered
     document.querySelectorAll(".hcga-theme-btn").forEach((btn) => {
       btn.innerHTML = theme === "dark" 
-        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> <span>Claro</span>`
-        : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span>Oscuro</span>`;
+        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> <span>Claro</span>`
+        : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> <span>Oscuro</span>`;
     });
   }
 
@@ -463,7 +469,6 @@
 
     const dict = TRANSLATIONS[lang] || TRANSLATIONS.es;
 
-    // Translate all elements with data-i18n attribute
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) {
@@ -475,12 +480,10 @@
       }
     });
 
-    // Translate dynamic paths if PATHS variable exists on website/index page
     if (window.HCGA_RERENDER) {
       window.HCGA_RERENDER(lang);
     }
 
-    // Update lang button label
     document.querySelectorAll(".hcga-lang-btn").forEach((btn) => {
       btn.innerHTML = lang === "es" ? "🌐 <b>EN</b>" : "🌐 <b>ES</b>";
     });
@@ -492,7 +495,6 @@
     setTheme(currentTheme);
     setLanguage(currentLang);
 
-    // Try finding nav-ctas on landing page
     const navCtas = document.querySelector(".nav-ctas");
     if (navCtas) {
       const bar = document.createElement("div");
@@ -503,7 +505,6 @@
       `;
       navCtas.prepend(bar);
     } else {
-      // Floating widget for App screens & Demo
       const floatBar = document.createElement("div");
       floatBar.className = "hcga-controls-bar hcga-float-controls";
       floatBar.innerHTML = `
@@ -513,7 +514,6 @@
       document.body.appendChild(floatBar);
     }
 
-    // Add Click Listeners
     document.querySelectorAll(".hcga-theme-btn").forEach((btn) => {
       btn.addEventListener("click", () => {
         setTheme(currentTheme === "dark" ? "light" : "dark");
@@ -526,19 +526,16 @@
       });
     });
 
-    // Re-set to update text inside buttons
     setTheme(currentTheme);
     setLanguage(currentLang);
   }
 
-  // Auto-init on DOMContentLoaded
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountControls);
   } else {
     mountControls();
   }
 
-  // Expose Global API for pages
   window.HCGA_I18N = {
     setTheme,
     setLanguage,
