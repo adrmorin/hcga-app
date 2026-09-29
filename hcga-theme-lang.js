@@ -325,18 +325,18 @@
     const style = document.createElement("style");
     style.id = "hcga-theme-styles";
     style.textContent = `
-      /* Light Theme Full Contrast & Translucency Overrides */
+      /* Light Theme 30% Translucency & Full Contrast Overrides */
       [data-theme="light"] {
         --ink: #EBF1F6 !important;
-        --panel: rgba(255, 255, 255, 0.48) !important;
-        --panel-2: rgba(241, 245, 249, 0.42) !important;
+        --panel: rgba(255, 255, 255, 0.30) !important;
+        --panel-2: rgba(241, 245, 249, 0.30) !important;
         --line: rgba(15, 23, 42, 0.18) !important;
         --line-strong: rgba(15, 23, 42, 0.28) !important;
         --text: #0F172A !important;
         --text-dim: #1E293B !important;
         --text-dimmer: #334155 !important;
         --red-text: #990000 !important;
-        --red-bg: rgba(153, 0, 0, 0.18) !important;
+        --red-bg: rgba(153, 0, 0, 0.30) !important;
       }
 
       [data-theme="light"] body {
@@ -369,7 +369,7 @@
       }
 
       [data-theme="light"] .sub-pill {
-        background: rgba(241, 245, 249, 0.9) !important;
+        background: rgba(241, 245, 249, 0.30) !important;
         color: #334155 !important;
         border-color: rgba(15, 23, 42, 0.2) !important;
       }
@@ -381,20 +381,22 @@
       }
 
       [data-theme="light"] .tab-btn {
+        background: rgba(241, 245, 249, 0.30) !important;
         color: #334155 !important;
       }
       [data-theme="light"] .tab-btn.active {
-        background: rgba(255, 255, 255, 0.95) !important;
-        color: #0F172A !important;
+        background: #990000 !important;
+        color: #FFFFFF !important;
         border-color: #990000 !important;
       }
 
       [data-theme="light"] input,
       [data-theme="light"] select,
       [data-theme="light"] textarea {
-        background: #FFFFFF !important;
+        background: rgba(255, 255, 255, 0.30) !important;
         color: #0F172A !important;
         border-color: rgba(15, 23, 42, 0.25) !important;
+        backdrop-filter: blur(8px);
       }
 
       /* Control Widget Styling */
@@ -402,13 +404,13 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(0, 0, 0, 0.25);
+        background: rgba(0, 0, 0, 0.30);
         padding: 4px;
         border-radius: 9999px;
         border: 1px solid rgba(255, 255, 255, 0.2);
       }
       [data-theme="light"] .hcga-controls-bar {
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.30) !important;
         border-color: rgba(255, 255, 255, 0.35);
       }
 
