@@ -328,15 +328,15 @@
       /* Light Theme Full Contrast & Translucency Overrides */
       [data-theme="light"] {
         --ink: #EBF1F6 !important;
-        --panel: rgba(255, 255, 255, 0.85) !important;
-        --panel-2: rgba(241, 245, 249, 0.9) !important;
-        --line: rgba(15, 23, 42, 0.14) !important;
-        --line-strong: rgba(15, 23, 42, 0.25) !important;
+        --panel: rgba(255, 255, 255, 0.48) !important;
+        --panel-2: rgba(241, 245, 249, 0.42) !important;
+        --line: rgba(15, 23, 42, 0.18) !important;
+        --line-strong: rgba(15, 23, 42, 0.28) !important;
         --text: #0F172A !important;
-        --text-dim: #334155 !important;
-        --text-dimmer: #475569 !important;
+        --text-dim: #1E293B !important;
+        --text-dimmer: #334155 !important;
         --red-text: #990000 !important;
-        --red-bg: rgba(153, 0, 0, 0.14) !important;
+        --red-bg: rgba(153, 0, 0, 0.18) !important;
       }
 
       [data-theme="light"] body {
