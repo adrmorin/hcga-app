@@ -131,7 +131,34 @@
       theme_dark: "Modo Oscuro",
       theme_light: "Modo Claro",
       lang_es: "Español",
-      lang_en: "English"
+      lang_en: "English",
+
+      // Unified Master App & Subscription Tiers
+      sub_active_plan: "Plan Activo:",
+      sub_driver_name: "Chofer Independiente (Owner Operator)",
+      sub_driver_desc: "Acceso a tablero de cargas con tarifa protegida, reloj HOS FMCSA, DVIR digital y GPS de camiones.",
+      sub_fleet_name: "Compañía de Flotilla (Fleet Carrier)",
+      sub_fleet_desc: "Gestión de múltiples camiones y choferes, asignación de despacho y monitoreo de cumplimiento.",
+      sub_shipper_name: "Shipper / Broker (Cliente que envía Carga)",
+      sub_shipper_desc: "Publicación de cargas sin llamadas, rastreo GPS en vivo, firma digital de BOL y verificación MC.",
+      sub_demo_name: "Modo Demo Total (Todas las Capacidades Unificadas)",
+      sub_demo_desc: "Visualiza la potencialidad completa de la plataforma con todas las herramientas desbloqueadas.",
+      sub_switch_btn: "Cambiar Suscripción",
+
+      // App Action Controls & Notifications
+      btn_post_new_load: "+ Publicar Nueva Carga",
+      btn_start_dvir: "Iniciar DVIR Pre-Viaje",
+      btn_view_fleet_roster: "Ver Roster de Flotilla",
+      btn_ai_ask: "Preguntar a IA HCGA",
+      btn_sign_pod: "Firmar POD / BOL Digital",
+      btn_lock_rate: "Bloquear Tarifa Protegida",
+      btn_calculate_detention: "Simular Detention (+2h)",
+
+      // Badges
+      badge_rate_locked: "TARIFA PROTEGIDA & BLOQUEADA",
+      badge_fmcsa_ok: "CUMPLIMIENTO FMCSA 100%",
+      badge_detention_active: "DETENTION ACTIVA ($65/HR)",
+      badge_mc_verified: "AUTORIDAD MC-451207 VERIFICADA"
     },
 
     en: {
@@ -257,7 +284,34 @@
       theme_dark: "Dark Mode",
       theme_light: "Light Mode",
       lang_es: "Español",
-      lang_en: "English"
+      lang_en: "English",
+
+      // Unified Master App & Subscription Tiers
+      sub_active_plan: "Active Plan:",
+      sub_driver_name: "Independent Driver (Owner Operator)",
+      sub_driver_desc: "Access to load board with guaranteed rate lock, FMCSA HOS clock, digital DVIR, and truck GPS.",
+      sub_fleet_name: "Fleet Carrier Company",
+      sub_fleet_desc: "Manage multiple trucks & drivers, dispatch load assignment, and monitor FMCSA compliance.",
+      sub_shipper_name: "Shipper / Broker (Freight Client)",
+      sub_shipper_desc: "Instant no-call load posting, real-time GPS freight tracking, digital BOL signatures & MC vetting.",
+      sub_demo_name: "Full Unified Demo Mode (All Capabilities Unlocked)",
+      sub_demo_desc: "Visualize the complete potential of the platform with all tools and features unlocked.",
+      sub_switch_btn: "Switch Subscription",
+
+      // App Action Controls & Notifications
+      btn_post_new_load: "+ Post New Load",
+      btn_start_dvir: "Start Pre-Trip DVIR",
+      btn_view_fleet_roster: "View Fleet Roster",
+      btn_ai_ask: "Ask HCGA AI",
+      btn_sign_pod: "Sign Digital POD / BOL",
+      btn_lock_rate: "Lock Protected Rate",
+      btn_calculate_detention: "Simulate Detention (+2h)",
+
+      // Badges
+      badge_rate_locked: "RATE PROTECTED & LOCKED",
+      badge_fmcsa_ok: "100% FMCSA COMPLIANT",
+      badge_detention_active: "ACTIVE DETENTION ($65/HR)",
+      badge_mc_verified: "MC-451207 AUTHORITY VERIFIED"
     }
   };
 
