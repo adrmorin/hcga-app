@@ -42,7 +42,7 @@
       driver_f3: "Inspección DVIR digital antes de cada viaje",
       driver_f4: "Reloj de Horas de Servicio con las reglas de la FMCSA",
       driver_f5: "Navegador con truck stops, básculas y precio de combustible",
-      driver_f6: "Asistente de IA y chat directo con tu broker",
+      driver_f6: "Copiloto Técnico en ruta y chat directo con tu broker",
       driver_cta: "Probar la App de Choferes",
 
       // Fleet Path
@@ -94,7 +94,7 @@
       tech_p: "El resto de las herramientas que hoy viven repartidas en aplicaciones distintas.",
       tech_g1: "Navegador con truck stops, básculas y precio de combustible",
       tech_g2: "Chat directo con brokers y choferes",
-      tech_g3: "Asistente de IA disponible en todo momento",
+      tech_g3: "Copiloto Técnico 24/7 en ruta",
       tech_g4: "Firma digital de Rate Confirmation y BOL",
       tech_g5: "Panel de flotilla multi-camión",
       tech_g6: "Facturación y comprobantes centralizados",
@@ -446,6 +446,30 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
       }
+      /* Background image rule for span/div logo containers */
+      .hcga-logo {
+        display: inline-block;
+        flex-shrink: 0;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: contain;
+      }
+      .hero-logo-badge .hcga-logo,
+      .nav .hcga-logo,
+      .navbar .hcga-logo,
+      .keep-white .hcga-logo {
+        background-image: url('logo-white.svg?v=5') !important;
+      }
+
+      /* When theme is light AND element is inside a white/light card/panel or light footer -> Original Red Logo */
+      [data-theme="light"] .view-card .hcga-logo,
+      [data-theme="light"] .modal-body .hcga-logo,
+      [data-theme="light"] .bg-white .hcga-logo,
+      [data-theme="light"] .bg-light .hcga-logo,
+      [data-theme="light"] .footer .hcga-logo,
+      [data-theme="light"] footer .hcga-logo {
+        background-image: url('logo.svg?v=5') !important;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -455,6 +479,37 @@
     currentTheme = theme;
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("hcga_theme", theme);
+
+    // Dynamic logo color switching (Red on light/white background & light footers, White on dark background / red badges)
+    document.querySelectorAll("img").forEach((img) => {
+      const src = img.getAttribute("src") || "";
+      if (!src.includes("logo")) return;
+
+      const isRedBadgeOrNav = img.closest('.hero-logo-badge, .nav, nav, .navbar, .keep-white') || img.classList.contains('keep-white');
+
+      if (isRedBadgeOrNav) {
+        if (src.includes(".png")) {
+          img.src = "logo-white.png?v=5";
+        } else {
+          img.src = "logo-white.svg?v=5";
+        }
+      } else {
+        const isLightCardOrFooter = img.closest('.view-card, .modal-body, .bg-white, .bg-light, .view-head-title, .sub-banner-info, .sub-header-brand, .footer, footer');
+        if (theme === "light" && isLightCardOrFooter) {
+          if (src.includes(".png")) {
+            img.src = "logo.png?v=5";
+          } else {
+            img.src = "logo.svg?v=5";
+          }
+        } else {
+          if (src.includes(".png")) {
+            img.src = "logo-white.png?v=5";
+          } else {
+            img.src = "logo-white.svg?v=5";
+          }
+        }
+      }
+    });
 
     document.querySelectorAll(".hcga-theme-btn").forEach((btn) => {
       btn.innerHTML = theme === "dark" 
@@ -487,7 +542,8 @@
     }
 
     document.querySelectorAll(".hcga-lang-btn").forEach((btn) => {
-      btn.innerHTML = lang === "es" ? "🌐 <b>EN</b>" : "🌐 <b>ES</b>";
+      const globeSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px; margin-right:3px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`;
+      btn.innerHTML = lang === "es" ? `${globeSvg}<b>EN</b>` : `${globeSvg}<b>ES</b>`;
     });
   }
 
