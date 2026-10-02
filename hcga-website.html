@@ -20,15 +20,15 @@
     --maxw:1120px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth; scroll-padding-top:84px;}
+  html{scroll-behavior:smooth; scroll-padding-top:84px; width:100%; max-width:100%; overflow-x:hidden; background-color:var(--ink);}
   body{
-    margin:0; background:var(--ink); color:var(--text); font-family:'Plus Jakarta Sans','Inter',sans-serif;
+    margin:0; width:100%; max-width:100%; overflow-x:hidden; background:var(--ink); color:var(--text); font-family:'Plus Jakarta Sans','Inter',sans-serif;
     letter-spacing:-0.015em; -webkit-font-smoothing:antialiased; line-height:1.5;
   }
   h1,h2,h3,.display{font-family:'Plus Jakarta Sans','Outfit',sans-serif; font-weight:700; margin:0; letter-spacing:-0.025em;}
   p{margin:0;}
   a{color:inherit;}
-  .container{width:90%; max-width:1400px; margin:0 auto; padding:0 5%; box-sizing:border-box;}
+  .container{width:100%; max-width:1400px; margin:0 auto; padding:0 clamp(12px, 3vw, 32px); box-sizing:border-box;}
   section{padding:96px 0;}
   @media (max-width:720px){ section{padding:64px 0;} }
 
@@ -97,7 +97,9 @@
   .hero-trust div{font-size:12.5px; color:var(--text-dimmer); font-weight:600;}
   .hero-trust b{display:block; font-family:'Outfit'; font-size:22px; color:#fff; font-weight:700;}
 
-  .route-visual{position:relative; aspect-ratio:1/0.95; border-radius:20px; background:radial-gradient(ellipse at 30% 20%, #260A0A 0%, var(--panel) 65%); border:1px solid var(--line); overflow:hidden; padding:5%;}
+  .hero-media{position:relative; border-radius:20px; border:1px solid var(--line); overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,0.45); background:var(--panel); padding:4%;}
+  .hero-media img{width:100%; height:auto; display:block; object-fit:cover; border-radius:12px 12px 0 0;}
+  .route-visual{position:relative; aspect-ratio:16/9; border-radius:0 0 12px 12px; background:#0A0C0F; border-top:1px solid var(--line); overflow:hidden;}
   .route-visual svg{width:100%; height:100%; display:block;}
   #route-path{stroke-dasharray:900; stroke-dashoffset:900; animation:draw 2.1s ease forwards .3s;}
   @keyframes draw{to{stroke-dashoffset:0;}}
@@ -233,7 +235,7 @@
   .comp-item:hover{border-color:#990000; transform:translateY(-3px);}
   .tech-cell:hover{background:#202020;}
   .protect-row .picon{color:var(--red-text);}
-  .route-visual{background:radial-gradient(ellipse at 30% 20%, #2A0A0A 0%, #1A1A1A 65%);}
+  .route-visual{background:#0A0C0F;}
   /* footer como la web */
   footer{background:#111111; border-top:1px solid rgba(255,255,255,0.06);}
   footer .hcga-logo{
@@ -293,186 +295,111 @@
           <div><b>48h</b><span data-i18n="hero_trust_3">respuesta a cualquier reclamo</span></div>
         </div>
       </div>
-      <div class="route-visual">
-        <svg viewBox="0 0 600 340" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="gis-grid-web" width="30" height="30" patternUnits="userSpaceOnUse">
-              <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-              <circle cx="0" cy="0" r="1" fill="rgba(255,255,255,0.12)"/>
-            </pattern>
-            <filter id="route-glow-web" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3.5" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            <filter id="green-glow-web">
-              <feGaussianBlur stdDeviation="3" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
+      <div class="hero-media">
+        <img src="highway_truck_branded.png" alt="Camión HCGA en carretera">
+        <div class="route-visual">
+        <svg viewBox="0 0 600 340" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de ruta Atlanta, GA a Miami, FL" class="hero-geo">
             <style>
-              .gis-pulse { animation: gisPulse 2s infinite ease-out; }
-              .gis-pulse-fast { animation: gisPulse 1.2s infinite ease-out; }
-              .truck-dash { stroke-dasharray: 8 6; animation: dashMove 25s linear infinite; }
-              @keyframes gisPulse { 0% { r: 6px; opacity: 1; stroke-width: 1px; } 100% { r: 24px; opacity: 0; stroke-width: 3px; } }
-              @keyframes dashMove { to { stroke-dashoffset: -300; } }
+              .hero-geo text { font-family: 'Plus Jakarta Sans', sans-serif; }
+              .hero-geo .hm-grid { stroke: rgba(255,255,255,0.09); stroke-width: .6; stroke-dasharray: 2 4; }
+              .hero-geo .hm-gt { fill: rgba(255,255,255,0.38); font: 600 7px 'Space Grotesk', monospace; }
+              .hero-geo .hm-land { fill: rgba(255,255,255,0.045); stroke: rgba(255,255,255,0.55); stroke-width: 1.1; stroke-linejoin: round; }
+              .hero-geo .hm-lake { fill: rgba(56,189,248,0.2); stroke: rgba(255,255,255,0.4); stroke-width: .8; }
+              .hero-geo .hm-keys { stroke: rgba(255,255,255,0.45); stroke-width: 1.1; stroke-dasharray: 2 3; stroke-linecap: round; }
+              .hero-geo .hm-border { stroke: rgba(255,255,255,0.3); stroke-width: .8; stroke-dasharray: 5 3 1.5 3; }
+              .hero-geo .hm-hwy { stroke: rgba(255,255,255,0.2); stroke-width: 1.2; stroke-linejoin: round; }
+              .hero-geo .hm-shield rect { fill: #1D4ED8; stroke: #FFFFFF; stroke-width: .8; }
+              .hero-geo .hm-shield text { fill: #FFFFFF; font: 700 6.8px 'Space Grotesk', sans-serif; text-anchor: middle; }
+              .hero-geo .hm-state text { fill: rgba(255,255,255,0.28); font-size: 8.5px; font-weight: 800; letter-spacing: 2px; text-anchor: middle; }
+              .hero-geo .hm-water text { fill: rgba(56,189,248,0.6); font: italic 700 8.5px 'Space Grotesk', sans-serif; letter-spacing: 1.3px; text-anchor: middle; }
+              .hero-geo .hm-city circle { fill: #0A0C0F; stroke: #E2E8F0; stroke-width: 1.2; }
+              .hero-geo .hm-city text { fill: #94A3B8; font-size: 7.5px; font-weight: 600; }
+              .hero-geo .hm-badge rect, .hero-geo .hm-tip { fill: rgba(10,12,15,0.94); stroke-width: 1.1; }
+              .hero-geo .hm-t1 { fill: #FFFFFF; font-size: 8.5px; font-weight: 800; }
+              .hero-geo .hm-t2 { font: 700 7.5px 'Space Grotesk', sans-serif; }
+              .hero-geo .hm-t3 { fill: #CBD5E1; font-size: 7px; font-weight: 600; }
             </style>
-          </defs>
+            <defs>
+              <filter id="hm-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
 
-          <!-- Map Background Mesh & Tactical Grid -->
-          <rect width="600" height="340" fill="#090B0E"/>
-          <rect width="600" height="340" fill="url(#gis-grid-web)"/>
+            <!-- Mar -->
+            <rect width="600" height="340" fill="rgba(56,189,248,0.06)"/>
 
-          <!-- Latitude & Longitude Coordinate Lines -->
-          <g stroke="rgba(255, 255, 255, 0.07)" stroke-width="0.75" stroke-dasharray="3 3">
-            <!-- Latitude 33°N, 31°N, 29°N, 27°N -->
-            <line x1="0" y1="50" x2="600" y2="50" />
-            <text x="8" y="47" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">33°00'N</text>
-            <line x1="0" y1="115" x2="600" y2="115" />
-            <text x="8" y="112" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">31°00'N</text>
-            <line x1="0" y1="185" x2="600" y2="185" />
-            <text x="8" y="182" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">29°00'N</text>
-            <line x1="0" y1="255" x2="600" y2="255" />
-            <text x="8" y="252" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">27°00'N</text>
-            
-            <!-- Longitude 84°W, 82°W, 80°W -->
-            <line x1="190" y1="0" x2="190" y2="340" />
-            <text x="193" y="333" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">84°00'W</text>
-            <line x1="330" y1="0" x2="330" y2="340" />
-            <text x="333" y="333" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">82°00'W</text>
-            <line x1="465" y1="0" x2="465" y2="340" />
-            <text x="468" y="333" fill="rgba(255,255,255,0.25)" font-family="'Space Grotesk', monospace" font-size="7.5">80°00'W</text>
-          </g>
+            <!-- Retícula lat/lon -->
+            <path class="hm-grid" d="M0 26.2H600 M0 96.2H600 M0 166.2H600 M0 236.2H600 M0 306.2H600 M68.3 0V340 M148.9 0V340 M229.5 0V340 M310.1 0V340 M390.7 0V340 M471.2 0V340 M551.8 0V340"/>
+            <g class="hm-gt"><text x="5" y="23.2">34°N</text><text x="5" y="93.2">32°N</text><text x="5" y="163.2">30°N</text><text x="5" y="233.2">28°N</text><text x="5" y="303.2">26°N</text><text x="71.3" y="335">88°W</text><text x="151.9" y="335">86°W</text><text x="232.5" y="335">84°W</text><text x="313.1" y="335">82°W</text><text x="393.7" y="335">80°W</text><text x="474.2" y="335">78°W</text><text x="554.8" y="335">76°W</text></g>
 
-          <!-- Real Geographic Coastlines & Land Outline (Southeast US / Florida Peninsula) -->
-          <!-- Ocean Subtle Fill -->
-          <path d="M 0 0 L 600 0 L 600 340 L 0 340 Z" fill="rgba(14, 165, 233, 0.02)"/>
-          <!-- Landmass Outline (Georgia & Florida Peninsula) -->
-          <path d="M 0 0 
-                   L 520 0 
-                   C 515 20, 500 45, 480 65 
-                   C 460 85, 455 100, 465 115 
-                   C 475 140, 495 170, 485 195 
-                   C 470 230, 465 255, 455 285 
-                   C 450 300, 442 312, 435 320 
-                   C 410 335, 385 330, 375 315 
-                   C 365 295, 350 265, 335 235 
-                   C 320 205, 300 170, 275 145 
-                   C 250 135, 210 130, 160 128 
-                   C 110 125, 60 115, 0 110 Z" 
-                fill="rgba(255, 255, 255, 0.03)" 
-                stroke="rgba(255, 255, 255, 0.3)" 
-                stroke-width="1.2" 
-                stroke-linejoin="round"/>
-          
-          <!-- Detailed Island & Keys Contour Line Art -->
-          <path d="M 435 320 C 420 326, 400 330, 380 332" stroke="rgba(255,255,255,0.3)" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 3"/>
+            <!-- Costa del sureste de EE.UU. (proyección lat/lon real) -->
+            <path class="hm-land" d="M793.6 -29.8 L551.8 -19.2 L523.6 1.7 L499.5 5.2 L479.3 19.2 L471.2 31.5 L435.4 37.1 L419.7 48.3 L393.5 68.9 L374.5 78.8 L360.4 89.2 L356.4 95.5 L344.3 113.8 L334.2 126.0 L332.2 142.8 L334.7 156.1 L338.7 169.8 L349.6 193.9 L358.4 208.2 L369.3 220.5 L366.5 232.7 L376.2 248.8 L387.8 273.0 L389.5 281.4 L386.6 302.0 L385.4 314.6 L377.4 325.5 L374.5 334.2 L353.6 336.3 L346.7 337.0 L344.3 327.3 L334.7 311.2 L318.1 301.3 L306.0 290.5 L298.0 274.8 L286.7 259.7 L279.9 250.2 L276.6 237.3 L278.6 231.0 L281.9 204.8 L268.2 196.3 L254.1 177.8 L221.4 164.5 L213.4 169.8 L190.0 176.1 L174.7 177.8 L161.0 161.0 L128.8 152.6 L100.5 154.7 L80.4 157.5 L67.1 158.2 L46.2 154.0 L32.0 152.6 L24.0 153.7 L14.7 155.7 L3.8 160.3 L11.9 169.8 L7.9 183.8 L22.0 201.2 L-12.3 192.5 L-20.3 197.7 L-40.5 194.3 L-64.7 182.0 L-92.9 180.2 L-213.7 180.2 L-213.7 -61.2 L793.6 -61.2 Z"/>
+            <ellipse class="hm-lake" cx="357.2" cy="273.0" rx="7.5" ry="7"/>
+            <path class="hm-keys" d="M368.5 343.0 L346.3 351.8 L318.9 356.7"/>
 
-          <!-- State Borders (Georgia / Florida Line at 31°N & GA/AL border) -->
-          <path d="M 100 115 L 465 115" stroke="rgba(239, 68, 68, 0.4)" stroke-width="1" stroke-dasharray="4 4"/>
-          <path d="M 100 0 L 100 115" stroke="rgba(239, 68, 68, 0.4)" stroke-width="1" stroke-dasharray="4 4"/>
+            <!-- Fronteras estatales -->
+            <g class="hm-border"><path d="M332.2 141.4 L308.5 153.7 L301.6 146.3 L194.8 141.4 L189.2 131.2"/><path d="M189.2 131.2 L191.2 85.8 L189.6 80.1 L165.0 -8.8"/><path d="M355.2 95.2 L330.2 61.2 L314.1 43.8 L285.9 26.2 L265.8 5.2 L265.8 -8.8"/><path d="M189.2 131.2 L84.4 131.2 L87.7 156.4"/><path d="M52.2 152.3 L51.0 131.2 L60.3 -8.8"/><path d="M7.1 160.0 L-1.4 131.2 L-76.7 131.2"/><path d="M265.8 -8.8 L298.0 -15.8 L354.4 -12.3 L402.7 -1.7 L449.1 31.5"/></g>
 
-          <!-- Real Geographic Labels -->
-          <text x="140" y="80" fill="rgba(255,255,255,0.22)" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" letter-spacing="2">ESTADO DE GEORGIA</text>
-          <text x="315" y="200" fill="rgba(255,255,255,0.22)" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" letter-spacing="2">PENÍNSULA DE FLORIDA</text>
-          <text x="110" y="240" fill="rgba(56, 189, 248, 0.35)" font-family="'Space Grotesk', sans-serif" font-size="9.5" font-style="italic" font-weight="700" letter-spacing="1.5">GOLFO DE MÉXICO</text>
-          <text x="480" y="150" fill="rgba(56, 189, 248, 0.35)" font-family="'Space Grotesk', sans-serif" font-size="9.5" font-style="italic" font-weight="700" letter-spacing="1.5">OCÉANO ATLÁNTICO</text>
+            <!-- Red interestatal -->
+            <g class="hm-hwy"><path d="M193.2 -19.2 L213.8 35.0 L244.4 66.8 L249.2 115.5 L258.5 137.2 L284.3 159.6 L297.2 178.5 L304.4 194.6 L308.5 206.2 L294.0 236.2 L291.9 260.8 L316.1 285.2 L322.2 301.0 L374.5 301.0 L378.6 311.5"/><path d="M435.0 -15.8 L400.3 19.2 L366.5 64.8 L342.3 92.7 L330.2 126.0 L323.8 154.7 L346.3 194.3 L362.5 232.7 L386.6 281.4 L382.6 313.2"/><path d="M-92.9 150.5 L-58.6 150.5 L-15.1 168.0 L-3.4 156.8 L66.7 142.1 L100.5 149.8 L148.9 145.2 L218.2 150.8 L284.3 159.6 L323.8 154.7"/><path d="M291.9 237.3 L335.1 217.4 L348.4 194.3"/><path d="M244.4 66.8 L289.9 82.3 L346.7 93.5"/><path d="M116.7 43.0 L169.0 38.5 L213.8 35.0 L261.7 42.0 L311.3 44.8 L349.2 26.2 L400.3 19.2"/><path d="M136.8 83.3 L173.1 75.2 L197.3 47.3 L213.8 35.0 L249.6 15.8 L289.9 0.0 L330.2 -19.2"/><path d="M116.7 -19.2 L116.7 43.0 L136.8 83.3 L84.4 120.7 L66.7 142.1"/></g>
+            <g class="hm-shield"><g transform="translate(246.8,91.0)"><rect x="-11" y="-6.5" width="22" height="13" rx="3"/><text y="3">I-75</text></g><g transform="translate(372.5,245.0)"><rect x="-11" y="-6.5" width="22" height="13" rx="3"/><text y="3">I-95</text></g><g transform="translate(165.0,145.2)"><rect x="-11" y="-6.5" width="22" height="13" rx="3"/><text y="3">I-10</text></g><g transform="translate(294.0,78.8)"><rect x="-11" y="-6.5" width="22" height="13" rx="3"/><text y="3">I-16</text></g></g>
 
-          <!-- Secondary Highway Line Network (I-75, I-95, I-10, I-4 Real Arterials) -->
-          <g stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.2" fill="none">
-            <!-- I-10 East-West Corridor (Pensacola -> Tallahassee -> Jacksonville) -->
-            <path d="M 0 110 L 210 125 L 330 135 L 465 115" stroke-dasharray="2 3"/>
-            <!-- I-95 Coastal Highway (Jacksonville -> Daytona -> WPB -> Miami) -->
-            <path d="M 465 115 L 485 195 L 455 285 L 440 295" stroke-dasharray="2 3"/>
-            <!-- I-4 Highway (Tampa -> Orlando -> Daytona) -->
-            <path d="M 335 235 L 390 195 L 485 195" stroke-dasharray="2 3"/>
-            <!-- Highway Markers (I-75 & I-95 badges) -->
-            <text x="215" y="60" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', sans-serif" font-size="7" font-weight="700">I-75</text>
-            <text x="475" y="240" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', sans-serif" font-size="7" font-weight="700">I-95</text>
-          </g>
+            <!-- Rótulos -->
+            <g class="hm-state"><text x="285.9" y="99.8">GEORGIA</text><text x="336.3" y="262.5">FLORIDA</text><text x="112.6" y="85.8">ALABAMA</text><text x="364.5" y="52.5">S. CAROLINA</text></g>
+            <g class="hm-water"><text x="148.9" y="271.2">GOLFO DE MÉXICO</text><text x="487.4" y="183.8">OCÉANO ATLÁNTICO</text></g>
+            <g class="hm-city"><circle cx="244.4" cy="66.8" r="2.4"/><text x="250.4" y="64.8" text-anchor="start">Macon</text><circle cx="346.7" cy="93.5" r="2.4"/><text x="352.7" y="91.5" text-anchor="start">Savannah</text><circle cx="323.8" cy="154.7" r="2.4"/><text x="329.8" y="157.7" text-anchor="start">Jacksonville</text><circle cx="218.2" cy="150.8" r="2.4"/><text x="218.2" y="144.8" text-anchor="middle">Tallahassee</text><circle cx="335.1" cy="217.4" r="2.4"/><text x="341.1" y="215.4" text-anchor="start">Orlando</text><circle cx="291.5" cy="238.0" r="2.4"/><text x="286.5" y="241.0" text-anchor="end">Tampa</text><circle cx="388.6" cy="281.4" r="2.4"/><text x="394.6" y="284.4" text-anchor="start">West Palm Beach</text></g>
 
-          <!-- Active Freight Route Line (Atlanta, GA -> Macon -> Valdosta -> Orlando -> WPB -> Miami, FL) -->
-          <path d="M 190 40 C 220 55, 240 65, 250 75 C 270 95, 285 105, 290 115 C 330 145, 370 170, 390 195 C 430 235, 450 255, 455 270 C 455 282, 448 290, 440 295" 
-                stroke="rgba(220, 38, 38, 0.35)" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <path class="truck-dash" d="M 190 40 C 220 55, 240 65, 250 75 C 270 95, 285 105, 290 115 C 330 145, 370 170, 390 195 C 430 235, 450 255, 455 270 C 455 282, 448 290, 440 295" 
-                stroke="#F87171" stroke-width="2" stroke-linecap="round" fill="none"/>
-          <path d="M 190 40 C 220 55, 240 65, 250 75 C 270 95, 285 105, 290 115 C 330 145, 370 170, 390 195 C 430 235, 450 255, 455 270 C 455 282, 448 290, 440 295" 
-                stroke="#DC2626" stroke-width="3.5" filter="url(#route-glow-web)" stroke-linecap="round" fill="none"/>
+            <!-- Ruta activa -->
+            <path d="M213.8 35.0 L244.4 66.8 L249.2 115.5 L258.5 137.2 L284.3 159.6 L297.2 178.5 L304.4 194.6 L308.5 206.2 L335.1 217.4 L352.4 239.8 L372.5 255.5 L386.6 281.4 L383.8 302.0 L383.0 314.6" stroke="rgba(220,38,38,0.25)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="truck-dash" d="M213.8 35.0 L244.4 66.8 L249.2 115.5 L258.5 137.2 L284.3 159.6 L297.2 178.5 L304.4 194.6 L308.5 206.2 L335.1 217.4 L352.4 239.8 L372.5 255.5 L386.6 281.4 L383.8 302.0 L383.0 314.6" stroke="#F87171" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M213.8 35.0 L244.4 66.8 L249.2 115.5 L258.5 137.2 L284.3 159.6 L297.2 178.5 L304.4 194.6 L308.5 206.2 L314.0 208.5" stroke="#DC2626" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#hm-glow)"/>
 
-          <!-- Intermediate City Checkpoints -->
-          <g font-family="'Plus Jakarta Sans', sans-serif" font-size="8.5" font-weight="600" fill="#94A3B8">
-            <!-- Macon, GA -->
-            <circle cx="250" cy="75" r="3.5" fill="#090B0E" stroke="#E2E8F0" stroke-width="1.5"/>
-            <text x="260" y="78">Macon, GA</text>
-
-            <!-- Jacksonville, FL -->
-            <circle cx="465" cy="115" r="3.5" fill="#090B0E" stroke="#E2E8F0" stroke-width="1.5"/>
-            <text x="475" y="118">Jacksonville, FL</text>
-
-            <!-- Tampa, FL -->
-            <circle cx="335" cy="235" r="3" fill="#090B0E" stroke="#64748B" stroke-width="1.2"/>
-            <text x="295" y="240">Tampa, FL</text>
-          </g>
-
-          <!-- Active Vehicle Pulse Node at Orlando, FL (390, 195) -->
-          <circle cx="390" cy="195" r="5.5" fill="#F59E0B" stroke="#090B0E" stroke-width="2"/>
-          <circle cx="390" cy="195" class="gis-pulse-fast" fill="none" stroke="#F59E0B"/>
-
-          <!-- Waypoint 1: Origin (Atlanta, GA - 190, 40) -->
-          <g transform="translate(190, 40)">
-            <circle cx="0" cy="0" class="gis-pulse" fill="none" stroke="#10B981"/>
-            <circle cx="0" cy="0" r="6.5" fill="#10B981" stroke="#FFFFFF" stroke-width="2" filter="url(#green-glow-web)"/>
-            
-            <g transform="translate(-10, -40)">
-              <rect width="118" height="28" rx="6" fill="rgba(9, 11, 14, 0.92)" stroke="rgba(16, 185, 129, 0.6)" stroke-width="1.2"/>
-              <circle cx="12" cy="14" r="3.5" fill="#10B981"/>
-              <text x="22" y="13" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700">Atlanta, GA</text>
-              <text x="22" y="22" fill="#10B981" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600">ORIGEN · 06:30 AM</text>
+            <!-- Origen -->
+            <g transform="translate(213.8, 35.0)">
+              <circle class="gis-pulse" fill="none" stroke="#10B981"/>
+              <circle r="5.5" fill="#10B981" stroke="#FFFFFF" stroke-width="1.8"/>
+              <g transform="translate(12, -13)" class="hm-badge">
+                <rect width="114" height="27" rx="5" stroke="rgba(16,185,129,0.8)"/>
+                <text x="9" y="11.5" class="hm-t1">Atlanta, GA</text>
+                <text x="9" y="21.5" class="hm-t2" fill="#10B981">ORIGEN · 06:30 AM</text>
+              </g>
             </g>
-          </g>
 
-          <!-- Waypoint 2: Destination (Miami, FL - 440, 295) -->
-          <g transform="translate(440, 295)">
-            <circle cx="0" cy="0" class="gis-pulse" fill="none" stroke="#DC2626"/>
-            <circle cx="0" cy="0" r="6.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="2" filter="url(#route-glow-web)"/>
-            
-            <g transform="translate(-120, -10)">
-              <rect width="114" height="28" rx="6" fill="rgba(9, 11, 14, 0.92)" stroke="rgba(220, 38, 38, 0.6)" stroke-width="1.2"/>
-              <circle cx="12" cy="14" r="3.5" fill="#DC2626"/>
-              <text x="22" y="13" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700">Miami, FL</text>
-              <text x="22" y="22" fill="#F87171" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600">DESTINO · 05:45 PM</text>
+            <!-- Destino -->
+            <g transform="translate(383.0, 314.6)">
+              <circle class="gis-pulse" fill="none" stroke="#DC2626"/>
+              <circle r="5.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.8"/>
+              <g transform="translate(-124, -14)" class="hm-badge">
+                <rect width="114" height="27" rx="5" stroke="rgba(220,38,38,0.8)"/>
+                <text x="9" y="11.5" class="hm-t1">Miami, FL</text>
+                <text x="9" y="21.5" class="hm-t2" fill="#F87171">DESTINO · 05:45 PM</text>
+              </g>
             </g>
-          </g>
 
-          <!-- Active Live Telemetry Badge (Orlando Node at 390, 195) -->
-          <g transform="translate(390, 195)">
-            <circle cx="0" cy="0" r="14" stroke="rgba(245,158,11,0.5)" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
-            <g transform="translate(-65, -60)">
-              <rect width="134" height="40" rx="8" fill="rgba(15, 17, 23, 0.94)" stroke="rgba(245, 158, 11, 0.7)" stroke-width="1.2" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.6))"/>
-              <path d="M 65 40 L 60 46 L 70 46 Z" fill="rgba(15, 17, 23, 0.94)"/>
-              <circle cx="14" cy="14" r="3" fill="#F59E0B"/>
-              <text x="22" y="15" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="800" letter-spacing="0.3">EN TRÁNSITO</text>
-              <text x="100" y="15" fill="#F59E0B" font-family="'Space Grotesk', sans-serif" font-size="9" font-weight="700">65 MPH</text>
-              <text x="14" y="30" fill="#CBD5E1" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600">Reefer 36.5°F · Corridor I-75/I-95</text>
+            <!-- Camión en tránsito (60%) -->
+            <g transform="translate(314.0, 208.5)">
+              <circle class="gis-pulse-fast" fill="none" stroke="#F59E0B"/>
+              <circle r="6" fill="#F59E0B" stroke="#FFFFFF" stroke-width="2"/>
+              <g transform="translate(-176, -20)" class="hm-badge">
+                <rect width="162" height="40" rx="7" stroke="rgba(245,158,11,0.85)"/>
+                <path d="M162 14 L168 20 L162 26 Z" class="hm-tip"/>
+                <circle cx="10" cy="12" r="3" fill="#F59E0B"/>
+                <text x="18" y="15" class="hm-t1">EN TRÁNSITO · 60%</text>
+                <text x="120" y="15" class="hm-t2" fill="#F59E0B">62 MPH</text>
+                <text x="10" y="30" class="hm-t3">Reefer 36.5°F · I-75 S · Wildwood, FL</text>
+              </g>
             </g>
-          </g>
 
-          <!-- Top Left GIS Tactical HUD Badge -->
-          <g transform="translate(14, 14)">
-            <rect width="186" height="24" rx="12" fill="rgba(9, 11, 14, 0.85)" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
-            <circle cx="12" cy="12" r="3" fill="#10B981"/>
-            <text x="22" y="15.5" fill="#E2E8F0" font-family="'Space Grotesk', sans-serif" font-size="8.5" font-weight="700" letter-spacing="0.5">GPS ACTIVE · REAL GEOGRAPHY</text>
-          </g>
-
-          <!-- Bottom Right Coordinates & Scale Indicator -->
-          <g transform="translate(586, 325)">
-            <text x="0" y="0" fill="rgba(255,255,255,0.45)" font-family="'Space Grotesk', monospace" font-size="8" font-weight="600" text-anchor="end">33.7490° N, 84.3880° W → 25.7617° N, 80.1918° W</text>
-          </g>
-        </svg>
+            <!-- HUD -->
+            <g transform="translate(10, 10)" class="hm-badge">
+              <rect width="150" height="22" rx="11" stroke="rgba(255,255,255,0.22)"/>
+              <circle cx="12" cy="11" r="3" fill="#10B981"/>
+              <text x="21" y="14" class="hm-t3" style="font-family:'Space Grotesk',sans-serif;font-weight:700">GPS ACTIVE · REAL GEOGRAPHY</text>
+            </g>
+            <text x="592" y="16" text-anchor="end" fill="rgba(255,255,255,0.45)" font-family="'Space Grotesk', monospace" font-size="7" font-weight="600">33.7490°N 84.3880°W → 25.7617°N 80.1918°W</text>
+          </svg>
+        </div>
       </div>
     </div>
   </section>

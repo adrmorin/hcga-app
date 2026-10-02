@@ -325,6 +325,14 @@
     const style = document.createElement("style");
     style.id = "hcga-theme-styles";
     style.textContent = `
+      /* Root & Viewport Fit Rules to Eliminate White Margin Gaps */
+      html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        background-color: var(--ink, #0A0C0F) !important;
+      }
+
       /* Light Theme 30% Translucency & Full Contrast Overrides */
       [data-theme="light"] {
         --ink: #EBF1F6 !important;
@@ -339,6 +347,7 @@
         --red-bg: rgba(153, 0, 0, 0.30) !important;
       }
 
+      [data-theme="light"] html,
       [data-theme="light"] body {
         background-color: var(--ink) !important;
         color: var(--text) !important;
@@ -446,6 +455,63 @@
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
       }
+      /* Responsive Header Alignment & Margin Adjustment Rules */
+      .nav .container {
+        width: 100% !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        padding-left: clamp(12px, 3vw, 32px) !important;
+        padding-right: clamp(12px, 3vw, 32px) !important;
+        box-sizing: border-box !important;
+      }
+
+      .nav-ctas {
+        display: flex !important;
+        align-items: center !important;
+        gap: clamp(6px, 1.5vw, 12px) !important;
+        flex-shrink: 0 !important;
+      }
+
+      .user-profile-badge {
+        white-space: nowrap !important;
+        transition: all 0.2s ease !important;
+      }
+
+      @media (max-width: 768px) {
+        .nav-ctas {
+          gap: 6px !important;
+        }
+        .hcga-btn-toggle {
+          padding: 4px 8px !important;
+          font-size: 11px !important;
+          gap: 4px !important;
+        }
+        .user-profile-badge {
+          padding: 3px 8px 3px 4px !important;
+          gap: 5px !important;
+          font-size: 11.5px !important;
+        }
+        .user-alias-role {
+          display: none !important;
+        }
+        .brand-tag {
+          display: none !important;
+        }
+        .nav .btn-sm {
+          padding: 6px 10px !important;
+          font-size: 12px !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hcga-btn-toggle span {
+          display: none !important;
+        }
+        .user-alias-name {
+          font-size: 11px !important;
+        }
+      }
+
       /* Background image rule for span/div logo containers */
       .hcga-logo {
         display: inline-block;

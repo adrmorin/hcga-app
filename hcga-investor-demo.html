@@ -16,7 +16,7 @@
     --amber:#F59E0B; --green:#10B981;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;width:100%;max-width:100%;overflow-x:hidden;background-color:var(--ink);}
   body{background:var(--ink); color:var(--text); font-family:'Plus Jakarta Sans','Inter',sans-serif; letter-spacing:-0.015em; -webkit-font-smoothing:antialiased; min-height:100vh; overflow:hidden;}
   h1,h2,h3{font-family:'Plus Jakarta Sans','Outfit',sans-serif; font-weight:700; letter-spacing:-0.025em; margin:0;}
   .stage{position:relative; width:100vw; height:100vh; overflow:hidden; padding: 0 5vw;}
@@ -215,10 +215,90 @@
     </div>`;
 
   const phoneGps = `
-    <div class="pbar"><div class="brand"><span class="hcga-logo" role="img" aria-label="HCGA Trading LLC"></span><span class="brand-tag">DRIVER</span></div><h4>Navegador</h4><div class="sub">Ruta a Reno, NV</div></div>
+    <div class="pbar"><div class="brand"><span class="hcga-logo" role="img" aria-label="HCGA Trading LLC"></span><span class="brand-tag">DRIVER</span></div><h4>Navegador GPS</h4><div class="sub">Ruta Atlanta → Miami · Corredor I-75/I-95</div></div>
     <div class="pbody">
-      <div style="height:90px; background:#1B2A22; border-radius:10px; border:1px solid var(--line-strong); position:relative; overflow:hidden;">
-        <svg viewBox="0 0 200 90" style="width:100%;height:100%;"><path d="M10 78 C 60 60, 90 40, 140 30 S 190 12, 195 8" fill="none" stroke="#E84545" stroke-width="3"/><circle cx="10" cy="78" r="4" fill="#A0A0A0"/><circle cx="195" cy="8" r="4" fill="#E84545"/></svg>
+      <div style="height:105px; background:#090B0E; border-radius:10px; border:1px solid var(--line-strong); position:relative; overflow:hidden;">
+        <svg viewBox="0 0 200 105" style="width:100%;height:100%;" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="gis-grid-demo" width="15" height="15" patternUnits="userSpaceOnUse">
+              <path d="M 15 0 L 0 0 0 15" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.8"/>
+            </pattern>
+          </defs>
+
+          <!-- Map Background & GIS Grid Mesh -->
+          <rect width="200" height="105" fill="#090B0E"/>
+          <rect width="200" height="105" fill="url(#gis-grid-demo)"/>
+
+          <!-- Coordinate Lines (Latitudes & Longitudes) -->
+          <g stroke="rgba(255,255,255,0.1)" stroke-width="0.6" stroke-dasharray="2 2">
+            <line x1="0" y1="30" x2="200" y2="30"/>
+            <text x="4" y="27" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', monospace" font-size="6">31°N</text>
+            <line x1="0" y1="70" x2="200" y2="70"/>
+            <text x="4" y="67" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', monospace" font-size="6">27°N</text>
+            
+            <line x1="65" y1="0" x2="65" y2="105"/>
+            <text x="67" y="101" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', monospace" font-size="6">84°W</text>
+            <line x1="140" y1="0" x2="140" y2="105"/>
+            <text x="142" y="101" fill="rgba(255,255,255,0.3)" font-family="'Space Grotesk', monospace" font-size="6">80°W</text>
+          </g>
+
+          <!-- Line-art Coastlines & Geographic Contour (Georgia & Florida Peninsula) -->
+          <path d="M 0 0 
+                   L 175 0 
+                   C 170 12, 160 22, 150 30 
+                   C 142 38, 140 45, 146 54 
+                   C 150 64, 158 75, 152 86 
+                   C 138 95, 122 93, 112 84 
+                   C 96 65, 82 48, 58 40 
+                   C 30 38, 15 34, 0 32 Z" 
+                fill="rgba(255, 255, 255, 0.04)" 
+                stroke="rgba(255, 255, 255, 0.4)" 
+                stroke-width="1.2" 
+                stroke-linejoin="round"/>
+          
+          <!-- State Line (GA/FL border at 31°N) -->
+          <path d="M 30 30 L 150 30" stroke="rgba(239, 68, 68, 0.45)" stroke-width="0.8" stroke-dasharray="3 2"/>
+
+          <!-- Geographic Region Text Labels -->
+          <text x="42" y="20" fill="rgba(255,255,255,0.25)" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800">GEORGIA</text>
+          <text x="95" y="58" fill="rgba(255,255,255,0.25)" font-family="'Plus Jakarta Sans', sans-serif" font-size="7" font-weight="800">FLORIDA</text>
+
+          <!-- Interstate Highway Lines (I-75, I-95) -->
+          <g stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="2 2" fill="none">
+            <path d="M 0 32 L 65 37 L 105 40 L 150 30"/>
+            <path d="M 150 30 L 155 58 L 146 86"/>
+            <text x="70" y="16" fill="rgba(255,255,255,0.35)" font-family="'Space Grotesk', sans-serif" font-size="6" font-weight="700">I-75</text>
+            <text x="160" y="68" fill="rgba(255,255,255,0.35)" font-family="'Space Grotesk', sans-serif" font-size="6" font-weight="700">I-95</text>
+          </g>
+
+          <!-- Active Freight Route Vector Polyline -->
+          <path d="M 60 12 C 75 18, 85 22, 90 28 C 105 38, 120 48, 130 55 C 145 68, 150 75, 146 86" 
+                stroke="rgba(220, 38, 38, 0.4)" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M 60 12 C 75 18, 85 22, 90 28 C 105 38, 120 48, 130 55 C 145 68, 150 75, 146 86" 
+                stroke="#DC2626" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+          <!-- Origin Node (Atlanta, GA) -->
+          <circle cx="60" cy="12" r="3.5" fill="#10B981" stroke="#FFFFFF" stroke-width="1"/>
+          <text x="18" y="14" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700">Atlanta</text>
+
+          <!-- Destination Node (Miami, FL) -->
+          <circle cx="146" cy="86" r="3.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1"/>
+          <text x="153" y="90" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="700">Miami</text>
+
+          <!-- Active Vehicle Node (Orlando, FL - En Tránsito 60%) -->
+          <circle cx="130" cy="55" r="4.5" fill="#F59E0B" stroke="#090B0E" stroke-width="1.5"/>
+          <circle cx="130" cy="55" r="7" fill="none" stroke="#F59E0B" stroke-width="0.8" opacity="0.8"/>
+
+          <!-- Live Telemetry Badge -->
+          <rect x="58" y="58" width="68" height="20" rx="4" fill="rgba(9, 11, 14, 0.92)" stroke="rgba(245, 158, 11, 0.7)" stroke-width="0.8"/>
+          <text x="64" y="68" fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="6.5" font-weight="800">T-01 · 60% (65 MPH)</text>
+          <text x="64" y="75" fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="5.5" font-weight="600">Reefer 36.5°F · En tránsito</text>
+
+          <!-- Top Left GIS Badge -->
+          <rect x="6" y="5" width="48" height="12" rx="6" fill="rgba(9, 11, 14, 0.85)" stroke="rgba(255,255,255,0.2)" stroke-width="0.6"/>
+          <circle cx="11" cy="11" r="1.8" fill="#10B981"/>
+          <text x="16" y="13" fill="#E2E8F0" font-family="'Space Grotesk', sans-serif" font-size="5.5" font-weight="700">GPS LÍNEAS GIS</text>
+        </svg>
       </div>
       <div class="mcard"><div class="r1"><span>Pilot Flying J #247</span><span style="color:var(--amber);">$3.89</span></div><div class="r2">★ 4.4 (812) · 4.2 mi · Parqueo 68/120</div></div>
       <div class="mcard"><div class="r1"><span>CAT Scale — Pilot #247</span><span style="color:var(--text-dim);">Báscula</span></div><div class="r2">★ 4.6 (203) · $14.50 pesaje</div></div>
