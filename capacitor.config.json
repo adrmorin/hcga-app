@@ -1,0 +1,14 @@
+{
+  "appId": "com.hcgatrading.app",
+  "appName": "HCGA Trading",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_hcga",
+      "iconColor": "#890000"
+    }
+  }
+}

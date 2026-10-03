@@ -1,0 +1,9 @@
+/* Punto de entrada de estilos: tokens + reset original + Tailwind */
+@import 'leaflet/dist/leaflet.css';
+@import './tokens.css';
+@import './base.css';
+@import './vendor.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

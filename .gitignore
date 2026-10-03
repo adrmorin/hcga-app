@@ -1,3 +1,8 @@
-_backup_pre_unificacion/
-.DS_Store
-Thumbs.db
+node_modules
+dist
+android/app/build
+android/build
+android/.gradle
+android/local.properties
+*.log
+.idea

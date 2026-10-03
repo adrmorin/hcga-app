@@ -1,0 +1,228 @@
+/* ==========================================================================
+   HCGA Trading LLC — Design Tokens
+   Colores, tipografía y radios según el HCGA Brand Book v1.1 (10/2026):
+   rojo HCGA #890000, superficies asfalto, texto rojo sobre oscuro #EF5350,
+   Saira (titulares), Inter (texto e interfaz) e IBM Plex Mono (datos).
+   Tailwind consume estas variables desde tailwind.config.js.
+   ========================================================================== */
+:root {
+  /* Tier 1: Brand primitives (HCGA Brand Book v1.1) */
+  --hcga-red: #890000;          /* HCGA Red · RGB 137 0 0 · master del logo */
+  --hcga-red-deep: #6B0000;     /* hover / pressed */
+  --hcga-red-signal: #EF5350;   /* solo digital: texto/iconos rojos sobre fondo oscuro */
+  --hcga-asphalt: #111111;      /* fondo oscuro */
+  --hcga-asphalt-2: #1C1B1B;    /* superficie de app */
+  --hcga-asphalt-3: #262323;    /* superficie de app elevada */
+  --hcga-graphite: #4D4D4D;     /* texto secundario sobre claro */
+  --hcga-steel: #A0A0A0;        /* texto secundario sobre oscuro */
+  --hcga-concrete: #F3F1F0;     /* fondos de sección (tema claro) */
+  --hcga-white: #FFFFFF;
+
+  /* Colores de estado funcionales (nunca sustituyen al rojo de marca) */
+  --hcga-success: #10B981;
+  --hcga-warning: #F59E0B;
+  --hcga-error: #EF4444;
+  --hcga-info: #3B82F6;
+
+  --primitive-white: #FFFFFF;
+  --primitive-black: #000000;
+  --primitive-red-700: var(--hcga-red-deep);
+
+  /* Typography Families & Weights */
+  --font-family-display: 'Saira', 'Arial Narrow', Arial, sans-serif;  /* 800 italic, wdth 125 */
+  --font-family-heading: var(--font-family-display);
+  --font-family-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-family-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Fluid Typography Scale (Mínimo absoluto 12px por WCAG 2.2 / HIG / Material 3) */
+  --font-size-caption: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem); /* 12px - 13px */
+  --font-size-label-md: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem); /* 12px */
+  --font-size-label-lg: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem); /* 14px */
+  --font-size-body-md: clamp(0.875rem, 0.82rem + 0.25vw, 0.9375rem); /* 14px */
+  --font-size-body-lg: clamp(1rem, 0.95rem + 0.3vw, 1.0625rem); /* 16px */
+  --font-size-title-md: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem); /* 18px */
+  --font-size-title-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.375rem); /* 20px */
+  --font-size-headline-md: clamp(1.5rem, 1.35rem + 0.7vw, 1.75rem); /* 24px */
+  --font-size-headline-lg: clamp(1.75rem, 1.55rem + 1vw, 2.125rem); /* 28px */
+  --font-size-display: clamp(2.25rem, 2rem + 1.25vw, 2.75rem); /* 36px */
+
+  /* Legacy alias scaling for existing classes */
+  --font-size-xs: var(--font-size-caption);
+  --font-size-sm: var(--font-size-body-md);
+  --font-size-base: var(--font-size-body-lg);
+  --font-size-md: var(--font-size-title-md);
+  --font-size-lg: var(--font-size-headline-md);
+  --font-size-xl: var(--font-size-headline-lg);
+  --font-size-2xl: var(--font-size-display);
+
+  /* Spacing Scale (Grid Base 4 pt) */
+  --space-0: 0;
+  --space-0-5: 2px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Legacy alias spacing */
+  --space-2xs: var(--space-1);
+  --space-xs: var(--space-2);
+  --space-sm: var(--space-3);
+  --space-md: var(--space-4);
+  --space-lg: var(--space-6);
+  --space-xl: var(--space-8);
+  --space-2xl: var(--space-12);
+
+  /* Radii (Brand Book: 4px botones e inputs · 6px tarjetas y media) */
+  --radius-none: 0;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 6px;
+  --radius-xl: 6px;
+  --radius-full: 9999px;
+
+  /* Touch Targets (Nativo iOS / Android) */
+  --touch-target-min: 44px;
+  --size-icon-sm: 16px;
+  --size-icon-md: 20px;
+  --size-icon-lg: 24px;
+
+  /* Motion & Durations */
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --duration-slow: 350ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --transition-fast: var(--duration-fast) var(--ease-standard);
+  --transition-normal: var(--duration-base) var(--ease-standard);
+
+  /* Page Layout & Margins */
+  --page-gutter: 5%;
+  --page-inline-size: calc(100% - 2 * var(--page-gutter) - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+
+  /* Elevation Shadows & Blur */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-brand: 0 4px 20px rgba(137, 0, 0, 0.45);
+  --glass-backdrop-blur: blur(14px);
+
+  /* Tier 2: Semantic Tokens (tema oscuro por defecto: asfalto) */
+  --color-bg-canvas: var(--hcga-asphalt);
+  --color-bg-surface: var(--hcga-asphalt-2);
+  --color-bg-surface-raised: var(--hcga-asphalt-3);
+  --color-bg-subtle: #302C2C;
+  --color-bg-inverse: var(--hcga-concrete);
+  --color-bg-card: rgba(28, 27, 27, 0.85);
+
+  --color-text-default: var(--hcga-white);
+  --color-text-muted: var(--hcga-steel);
+  --color-text-subtle: var(--hcga-steel);
+  --color-text-inverse: var(--hcga-asphalt);
+  --color-text-link: var(--hcga-red-signal);
+  --color-text-on-primary: var(--hcga-white);
+  --color-text-accent: var(--hcga-red-signal);   /* texto rojo: #EF5350 sobre oscuro */
+
+  --color-border-default: #3D3838;
+  --color-border-strong: #5E5858;
+  --color-border-focus: var(--hcga-red-signal);
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+
+  --color-action-primary: var(--hcga-red);
+  --color-action-primary-hover: var(--hcga-red-deep);
+  --color-action-primary-pressed: var(--hcga-red-deep);
+  --color-action-secondary: var(--hcga-asphalt-3);
+  --color-action-secondary-fg: var(--hcga-white);
+
+  --color-success-bg: rgba(16, 185, 129, 0.12);
+  --color-success-fg: var(--hcga-success);
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-warning-fg: var(--hcga-warning);
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+  --color-danger-fg: var(--hcga-error);
+  --color-danger-solid: var(--hcga-error);
+  --color-info-bg: rgba(59, 130, 246, 0.14);
+  --color-info-fg: #60A5FA;
+
+  /* Legacy color aliases for backward compatibility */
+  --color-bg-primary: var(--color-bg-canvas);
+  --color-bg-surface-elevated: var(--color-bg-surface-raised);
+  --color-bg-surface-translucent: rgba(28, 27, 27, 0.88);
+  --color-brand-red: var(--hcga-red);
+  --color-brand-red-dark: var(--hcga-red-deep);
+  --color-brand-red-bright: var(--hcga-red);          /* relleno de marca (botones, marcadores) */
+  --color-brand-red-glow: rgba(239, 83, 80, 0.16);
+  --color-text-primary: var(--color-text-default);
+  --color-text-secondary: var(--color-text-muted);
+  --color-status-success: var(--color-success-fg);
+  --color-status-success-bg: var(--color-success-bg);
+  --color-status-warning: var(--color-warning-fg);
+  --color-status-warning-bg: var(--color-warning-bg);
+  --color-status-error: var(--color-danger-fg);
+  --color-status-error-bg: var(--color-danger-bg);
+  --color-status-info: var(--color-info-fg);
+  --color-status-info-bg: var(--color-info-bg);
+  --icon-color: var(--hcga-white);
+
+  /* Fondo de los mapas mientras cargan las teselas */
+  --map-canvas-bg: radial-gradient(ellipse at 50% 50%, var(--hcga-asphalt-3) 0%, var(--hcga-asphalt) 100%);
+}
+
+/* Light Theme Overrides (concreto + blanco, rojo HCGA #890000) */
+[data-theme="light"] {
+  --color-bg-canvas: var(--hcga-concrete);
+  --color-bg-surface: var(--hcga-white);
+  --color-bg-surface-raised: var(--hcga-white);
+  --color-bg-subtle: #ECE9E8;
+  --color-bg-inverse: var(--hcga-asphalt);
+  --color-bg-card: rgba(255, 255, 255, 0.92);
+
+  --color-text-default: var(--hcga-asphalt);
+  --color-text-muted: var(--hcga-graphite);
+  --color-text-subtle: var(--hcga-graphite);
+  --color-text-inverse: var(--hcga-white);
+  --color-text-link: var(--hcga-red);
+  --color-text-on-primary: var(--hcga-white);
+  --color-text-accent: var(--hcga-red);          /* texto rojo: #890000 sobre claro */
+
+  --color-border-default: #DCD7D5;
+  --color-border-strong: var(--hcga-steel);
+  --color-border-focus: var(--hcga-red);
+  --color-border-subtle: rgba(17, 17, 17, 0.1);
+
+  --color-action-primary: var(--hcga-red);
+  --color-action-primary-hover: var(--hcga-red-deep);
+  --color-action-primary-pressed: var(--hcga-red-deep);
+  --color-action-secondary: var(--hcga-white);
+  --color-action-secondary-fg: var(--hcga-red);
+
+  --color-success-bg: #ECFDF5;
+  --color-success-fg: #047857;
+  --color-warning-bg: #FFFBEB;
+  --color-warning-fg: #B45309;
+  --color-danger-bg: #FEF2F2;
+  --color-danger-fg: #B91C1C;
+  --color-danger-solid: #DC2626;
+  --color-info-bg: #EFF6FF;
+  --color-info-fg: #1D4ED8;
+
+  --color-bg-surface-translucent: rgba(255, 255, 255, 0.92);
+  --color-brand-red-glow: rgba(137, 0, 0, 0.1);
+  --icon-color: var(--color-text-default);
+
+  --shadow-sm: 0 2px 8px rgba(17, 17, 17, 0.08);
+  --shadow-md: 0 8px 24px rgba(17, 17, 17, 0.12);
+  --shadow-lg: 0 16px 40px rgba(17, 17, 17, 0.18);
+
+  --map-canvas-bg: radial-gradient(ellipse at 50% 50%, var(--hcga-white) 0%, var(--hcga-concrete) 100%);
+}

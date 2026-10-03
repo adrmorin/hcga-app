@@ -1,0 +1,33 @@
+{
+  "name": "HCGA Trading LLC",
+  "version": "1.1",
+  "date": "2026-10",
+  "color": {
+    "red": { "hex": "#890000", "rgb": [137, 0, 0], "cmyk_reference": [0, 100, 100, 46], "pantone": "to match with physical guide" },
+    "red-deep": { "hex": "#6B0000", "use": "hover / pressed" },
+    "red-signal": { "hex": "#EF5350", "use": "digital only, red text on dark" },
+    "asphalt": { "hex": "#111111", "pantone_reference": "Black 6 C" },
+    "asphalt-2": { "hex": "#1C1B1B", "use": "app surface" },
+    "asphalt-3": { "hex": "#262323", "use": "app surface raised" },
+    "graphite": { "hex": "#4D4D4D" },
+    "steel": { "hex": "#A0A0A0" },
+    "concrete": { "hex": "#F3F1F0" },
+    "white": { "hex": "#FFFFFF" }
+  },
+  "status": { "success": "#10B981", "warning": "#F59E0B", "error": "#EF4444", "info": "#3B82F6" },
+  "font": {
+    "logotype": "Bronk Bold (logo artwork only, never typed)",
+    "display": { "family": "Saira", "weight": 800, "style": "italic", "width": 125 },
+    "body": { "family": "Inter", "weights": [400, 500, 600, 700] },
+    "mono": { "family": "IBM Plex Mono", "weights": [400, 500, 600] }
+  },
+  "radius": { "sm": 4, "md": 6 },
+  "logo": {
+    "clear_space": "X = height of the TRADING LLC line, all sides",
+    "min_size": { "horizontal": "180 px / 45 mm", "vertical": "110 px / 25 mm" }
+  },
+  "tagline": {
+    "en": "Scalable commercial transportation, powered by data.",
+    "es": "Transporte comercial escalable, impulsado por datos."
+  }
+}

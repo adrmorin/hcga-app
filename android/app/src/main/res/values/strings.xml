@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HCGA Trading</string>
+    <string name="title_activity_main">HCGA Trading</string>
+    <string name="package_name">com.hcgatrading.app</string>
+    <string name="custom_url_scheme">com.hcgatrading.app</string>
+</resources>

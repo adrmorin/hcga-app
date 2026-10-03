@@ -1,0 +1,33 @@
+{
+  "name": "hcga-app",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "HCGA Trading LLC — App móvil (React + Vite + Tailwind + Capacitor)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "android:sync": "vite build && cap sync android",
+    "android:open": "cap open android",
+    "android:run": "vite build && cap sync android && cap run android",
+    "android:apk": "vite build && cap sync android && cd android && gradlew.bat assembleDebug",
+    "emulator": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/deploy-emulator.ps1"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19",
+    "vite": "^5.4.21"
+  }
+}

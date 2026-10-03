@@ -1,0 +1,56 @@
+/* ==========================================================================
+   Ajustes sobre DOM que no genera React (Tailwind no puede alcanzarlo con
+   clases en JSX): controles y tooltips de Leaflet y el interior de los SVG del
+   fondo de camiones. Valores idénticos al CSS original.
+   ========================================================================== */
+
+/* --- Fondo de camiones: rellenos de las piezas del SVG generado --- */
+.truck-bg .tb-body { fill: currentColor; fill-opacity: 0.35; }
+.truck-bg .tb-glass { fill: currentColor; fill-opacity: 0.70; }
+.truck-bg .tb-dark { fill: currentColor; fill-opacity: 0.85; }
+.truck-bg .tb-tire { fill: currentColor; fill-opacity: 0.95; }
+
+/* --- Leaflet: capas, atribución y zoom dentro de los mapas --- */
+.live-map .leaflet-tile-pane {
+  opacity: 0.9;
+}
+
+.live-map .leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--font-size-caption);
+}
+
+.live-map .leaflet-control-attribution a {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="light"] .live-map .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.7);
+  color: rgba(15, 23, 42, 0.6);
+}
+
+[data-theme="light"] .live-map .leaflet-control-attribution a {
+  color: rgba(15, 23, 42, 0.8);
+}
+
+.live-map .leaflet-control-zoom a {
+  background: var(--color-bg-surface-translucent);
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+/* --- Leaflet: etiquetas (tooltips) de los marcadores --- */
+.map-pin-label {
+  background: rgba(10, 12, 18, 0.8);
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
+  color: #fff;
+  font: 700 10px/1.2 var(--font-family-body);
+  padding: 3px 6px;
+}
+
+.map-pin-label::before {
+  display: none;
+}
