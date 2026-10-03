@@ -8,13 +8,16 @@ import { Card, CardHeader } from '../../components/ui/Card';
 import { METRIC_BOX_CLASSES } from '../../components/ui/MetricBox';
 import { TruckIcon } from '../../components/icons/Icons';
 
+// Saira (titulares) no tiene el carácter →: la flecha se dibuja con Inter
+const RouteArrow = () => <span className="font-body not-italic">→</span>;
+
 function AvailableLoad({ load, onAccept }) {
   return (
     <div className={METRIC_BOX_CLASSES}>
       <div className="flex justify-between items-center">
         <div>
           <Badge variant="warning">DISPONIBLE</Badge>
-          <h3 className="mt-[6px]">{load.origin} → {load.destination}</h3>
+          <h3 className="mt-[6px]">{load.origin} <RouteArrow /> {load.destination}</h3>
           <p>{load.miles} millas · {load.equipment} · {load.weight}</p>
           <p><strong>Broker:</strong> {load.broker} (Verificado ✓)</p>
         </div>
@@ -56,7 +59,7 @@ function InTransitLoad({ load, onArrive }) {
       <div className="flex justify-between items-center">
         <div>
           <Badge variant="info" dot>EN TRÁNSITO</Badge>
-          <h3 className="mt-[4px]">{load.origin} → {load.destination}</h3>
+          <h3 className="mt-[4px]">{load.origin} <RouteArrow /> {load.destination}</h3>
           <p>ETA Estimado: 4 hrs 15 min · Velocidad GPS: 65 mph</p>
         </div>
         <div>
